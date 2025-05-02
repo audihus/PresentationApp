@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-  <title>Detail Master Tutorial</title>
-</head>
-<body class="bg-gray-100 min-h-screen p-6">
+@extends('masterTutorial.layout')
+@section('title', 'Show Master Tutorial')
+
+@section('content')
   <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
     <h1 class="text-2xl font-bold mb-4">Detail Master Tutorial</h1>
 
@@ -42,5 +37,4 @@
 
     <a href="{{ route('masterTutorial.index') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Kembali</a>
   </div>
-</body>
-</html>
+@endsection

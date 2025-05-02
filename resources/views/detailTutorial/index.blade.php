@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body class="bg-gray-100 min-h-screen">
+@extends('detailTutorial.layout')
+@section('title', 'Index Detail Tutorial')
+@section('content')
   <!-- Navbar / Header -->
   <header class="bg-white shadow p-4 flex justify-between items-center">
     <h1 class="text-2xl font-semibold text-gray-800">Data Detail Tutorial</h1>
     <a href="{{ route('logout') }}" class="text-sm text-red-500 hover:underline">Logout</a>
   </header>
-
   <!-- Main Content -->
   <div class="max-w-7xl mx-auto px-4 py-8">
     <!-- Card -->
@@ -25,14 +16,14 @@
         <h2 class="text-2xl font-semibold text-gray-800">Data Detail Tutorial</h2>
         <a href="{{ route('detailTutorial.create', ['id' => $masterTutorialId]) }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Tambah Detail</a>
       </div>
-  
+
       <!-- Alert -->
       @if(session('success'))
         <div class="mb-4 px-4 py-3 bg-green-100 border border-green-400 text-green-700 rounded-lg">
           {{ session('success') }}
         </div>
       @endif
-  
+
       <!-- Table -->
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 border border-gray-300 text-sm">
@@ -109,5 +100,4 @@
       });
     }
   </script>
-</body>
-</html>
+@endsection

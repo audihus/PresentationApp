@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Document</title>
-</head>
-<body class="bg-gray-100 min-h-screen">
+@extends('masterTutorial.layout')
+@section('title', 'Edit Master Tutorial')
+
+@section('content')
   <!-- Navbar / Header -->
   <header class="bg-white shadow p-4 flex justify-between items-center">
     <h1 class="text-2xl font-semibold text-gray-800">Manajemen Master Tutorial</h1>
@@ -64,7 +58,5 @@
       </div>
     </form>
   </div>
-
-  </main>
-</body>
-</html>
+</main>
+@endsection
