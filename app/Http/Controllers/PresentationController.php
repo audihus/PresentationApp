@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\DetailTutorial;
 use App\Models\MasterTutorial;
 use Illuminate\Support\Str;
@@ -34,6 +35,18 @@ class PresentationController extends Controller
                     ->orderBy('order')
                     ->get();
 
-        return view('presentation.finished', compact('tutorial', 'details', 'unique'));
+        return view('presentation.finished', compact('tutorial', 'details', 'unique', 'slugId'));
+    }
+
+    public function downloadPDF($slugId, $unique)
+    {
+        $id = intval(Str::afterLast($slugId, '-'));
+        $tutorial = MasterTutorial::findOrFail($id);
+
+        $details = DetailTutorial::where('master_tutorial_id', $id)
+                   ->orderBy('order')
+                   ->get();
+
+        return pdf::loadView('presentation.download', compact('tutorial', 'details' ))->download("tutorial-{$slugId}.pdf");
     }
 }

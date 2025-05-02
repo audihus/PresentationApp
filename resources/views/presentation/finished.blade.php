@@ -8,6 +8,9 @@
 </head>
 <body class="bg-gray-100 p-6">
   <h1 class="text-3xl font-bold mb-6 text-blue-800">{{ $tutorial->judul }}</h1>
+  {{-- @php
+      dd($unique)
+  @endphp --}}
 
   @foreach ($details as $detail)
     <div class="bg-white p-4 rounded shadow mb-4">
@@ -41,6 +44,11 @@
       @endif
     </div>
   @endforeach
+  
+  <a href="{{ route('presentation.download', ['slugId' => $slugId,'unique' => $unique]) }}"
+  class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+    Download PDF  
+  </a>
 
   <p class="text-sm text-gray-400 text-center mt-8">Halaman ini otomatis memperbarui setiap 5 detik</p>
 </body>

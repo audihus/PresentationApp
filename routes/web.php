@@ -34,4 +34,5 @@ Route::middleware(['check.token'])->group(function (){
 });
 
 Route::get('/presentation/{slugId}/{unique}', [PresentationController::class, 'finished'])->name('presentation.finished');
+Route::get('/presentation/{slugId}/{unique}/download', [PresentationController::class, 'downloadPDF'])->name('presentation.download');
 Route::get('/presentation/{slugId}', [PresentationController::class, 'show'])->name('presentation.view');

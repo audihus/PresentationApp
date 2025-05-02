@@ -17,17 +17,22 @@ class MasterTutorialController extends Controller
     // Simpan data tutorial baru
     public function store(Request $request)
     {
+
+        $matkulList = session('matkul');
+
         $request->validate([
             'judul' => 'required|string|max:255',
             'kode_matkul' => 'required|string|max:100',
             'creator_email' => 'required|email',
         ]);
 
+        $nama_matkul = collect($matkulList)->firstWhere('kdmk', $request['kode_matkul'])['nama'] ?? 'Mata Kuliah Tidak Diketahui';
         $uniqueNumber = uniqid();
 
         $tutorial = new MasterTutorial();
         $tutorial->judul = $request->judul;
         $tutorial->kode_matkul = $request->kode_matkul;
+        $tutorial->nama_matkul = $nama_matkul;
         $tutorial->creator_email = $request->creator_email;
 
         $tutorial->save();
